@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: smartcommerce-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: smartcommerce-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/smartcommerce?authSource=admin
+      JWT_SECRET: your_jwt_secret_here
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  # Store Frontend
+  frontend-store:
+    build: ./frontend-store
+    container_name: smartcommerce-store
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  # Admin Dashboard
+  admin-dashboard:
+    build: ./admin-dashboard
+    container_name: smartcommerce-admin
+    restart: always
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
