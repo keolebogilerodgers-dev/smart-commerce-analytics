@@ -12,12 +12,12 @@
 
 This isn't just another e-commerce site. It's a **complete business solution** that demonstrates:
 
-### 🎯 For Alpha Direct (Cleaning Supplies Company)
+### 🎯 For Cleaning Supplies Company
 - **B2B Product Management**: Bulk ordering, contract pricing, inventory analytics
 - **Safety Compliance**: MSDS sheet tracking, chemical management
 - **Supply Chain Optimization**: Real-time inventory, predictive reordering
 
-### 🏢 For Debswana (Mining Company) 
+### 🏢 For Mining Company
 - **Procurement Workflows**: Multi-level approval systems, budget tracking
 - **Compliance Reporting**: BEE compliance, safety regulations, audit trails
 - **Resource Optimization**: Equipment tracking, maintenance scheduling
@@ -56,6 +56,7 @@ This isn't just another e-commerce site. It's a **complete business solution** t
 - Sales forecasting
 
 ## 📁 Project Architecture
+
 smart-commerce-analytics/
 ├── 📁 backend/ # Business Intelligence API
 │ ├── models/ # MongoDB schemas
